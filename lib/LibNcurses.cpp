@@ -65,6 +65,11 @@ void LibNcurses::windowDisplay(std::vector<std::vector<char>> tab)
     }
 }
 
+void LibNcurses::setTextures(std::map<char, std::string>)
+{
+
+}
+
 /* USER INPUT */
 
 void LibNcurses::userInput()

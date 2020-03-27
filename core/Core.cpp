@@ -22,7 +22,7 @@ Core::Core(const std::string &lib_path)
     this->_gameCount = 0;
     std::vector<char> baseline;
     for (int i = 0; i < TAB_W; i++)
-        baseline.push_back('A');
+        baseline.push_back(i % 2 ? 'A' : 'B');
     for (int j = 0; j < TAB_H; j++)
         this->_tab.push_back(baseline);
 }
@@ -52,6 +52,12 @@ void Core::setCurrentLib(ILib *lib)
     this->_currentLib = lib;
 }
 
+void Core::setTexmap(std::map <char, std::string>texMap)
+{
+    this->_texMap = texMap;
+}
+
+
 /* OTHERS */
 
 void Core::loadLib(const std::string &lib_path)
@@ -63,6 +69,7 @@ void Core::loadLib(const std::string &lib_path)
     if (obj == nullptr)
         std::cout << "nope" << std::endl;
     this->_currentLib = obj();
+    this->_currentLib->setTextures(this->_texMap);
 }
 
 void Core::closeLib()

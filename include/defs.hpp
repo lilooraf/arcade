@@ -15,11 +15,11 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <vector>
-
+#include <map>
 #include <dirent.h>
 #include <cstring>
 
-
+#define IMG_SIZE    32
 #define RAT         1.3
 #define DISPLAY_H   640
 #define DISPLAY_W   DISPLAY_H * RAT

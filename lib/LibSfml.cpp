@@ -12,6 +12,8 @@ LibSfml::LibSfml()
     this->_window = new sf::RenderWindow(sf::VideoMode(DISPLAY_W, DISPLAY_H), "SFML Window");
     this->_window->setFramerateLimit(144);
     this->_windowState = false;
+    this->_sprite.setTextureRect(sf::IntRect(0, 0, IMG_SIZE, IMG_SIZE));
+    this->_sprite.setScale(sf::Vector2f(IMG_SIZE / (DISPLAY_H / TAB_H) , IMG_SIZE / (DISPLAY_H / TAB_H)));
 }
 
 LibSfml::~LibSfml()
@@ -45,13 +47,39 @@ bool LibSfml::windowIsOpen() const
 
 void LibSfml::windowClear()
 {
-    this->_window->display();
     this->_window->clear();
+}
+
+void LibSfml::setTextures(std::map<char, std::string> texMap)
+{
+    sf::Texture texture;
+
+    for (std::map<char, std::string>::iterator it = texMap.begin(); it != texMap.end(); ++it) {
+        texture.loadFromFile(it->second);
+        this->_textures.insert(std::make_pair(it->first,texture));
+    }
 }
 
 void LibSfml::windowDisplay(std::vector<std::vector<char>> tab)
 {
+    sf::Transform t;
+    std::map<char, sf::Texture>::iterator it;
 
+    int y = 0;
+    for (std::vector<char> list: tab) {
+        int x = 0;
+        for (char c : list) {
+            it = this->_textures.find(c);
+            if (it != this->_textures.end()) {
+                this->_sprite.setTexture(it->second);
+                this->_sprite.setPosition(x * TEX_SIZE, y * TEX_SIZE);
+                this->_window->draw(this->_sprite);
+            }
+            x++;
+        }
+        y++;
+    }
+    this->_window->display();
 }
 
 /* KEY INPUT */

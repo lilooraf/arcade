@@ -11,7 +11,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <map>
-
 #include "ILib.hpp"
 #include "defs.hpp"
 
@@ -25,7 +24,7 @@ class LibSdl : public ILib {
         void windowClear();
         bool windowIsOpen() const;
         void windowDisplay(std::vector<std::vector<char>>);
-        void setTextures();
+        void setTextures(std::map<char, std::string>);
 
         /* USER INPUT */
         void userInput();

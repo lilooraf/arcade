@@ -9,6 +9,7 @@
 #define CORE_HPP_
 
 #include "defs.hpp"
+#include <map>
 #include "../include/ILib.hpp"
 
 class Core {
@@ -22,6 +23,7 @@ class Core {
 
         /* SETTERS */
         void setCurrentLib(ILib *lib);
+        void setTexmap(std::map <char, std::string>);
 
         void loadLib(const std::string &);
         void closeLib();
@@ -38,6 +40,8 @@ class Core {
         std::vector<std::string> _graphLibs;
         size_t _libCount;
         size_t _gameCount;
+        std::map <char, std::string> _texMap;
+
 };
 
 #endif /* !CORE_HPP_ */

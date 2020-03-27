@@ -19,6 +19,7 @@ class ILib {
         virtual void windowClear() {};
         virtual bool windowIsOpen() const = 0;
         virtual void windowDisplay(std::vector<std::vector<char>>) {};
+        virtual void setTextures(std::map<char, std::string>) {};
 
         /* USER INPUT */
         virtual void userInput() {};

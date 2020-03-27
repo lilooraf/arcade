@@ -19,7 +19,7 @@ LibSdl::LibSdl()
     this->_windowState = false;
     this->_rect.h = TEX_SIZE;
     this->_rect.w = TEX_SIZE;
-    setTextures();
+
 }
 
 LibSdl::~LibSdl()
@@ -58,34 +58,31 @@ void LibSdl::windowClear()
     SDL_RenderClear(this->_renderer);
 }
 
-void LibSdl::setTextures()
+void LibSdl::setTextures(std::map<char, std::string> texMap)
 {
     SDL_Surface *surface;
 
-    surface = IMG_Load("./assets/test.png");
-    this->_textures.insert(std::make_pair('A', SDL_CreateTextureFromSurface(this->_renderer, surface)));
-    
-    surface = IMG_Load("./assets/test1.png");
-    this->_textures.insert(std::make_pair('B', SDL_CreateTextureFromSurface(this->_renderer, surface)));
-
-    // Add Textures :
-
-    /* surface = IMG_Load("./assets/__TEXTURE_NAME__");
-    this->_textures.insert(std::make_pair(__CHAR_IN_TAB__, SDL_CreateTextureFromSurface(this->_renderer, surface))); */
-
-    SDL_FreeSurface(surface);
+    for (std::map<char, std::string>::iterator it = texMap.begin(); it != texMap.end(); ++it) {
+        surface = IMG_Load(it->second.c_str());
+        this->_textures.insert(std::make_pair(it->first, SDL_CreateTextureFromSurface(this->_renderer, surface)));
+    }
 }
 
 void LibSdl::windowDisplay(std::vector<std::vector<char>> tab)
 {
     int y = 0;
+    std::map<char, SDL_Texture *>::iterator it;
+
     for (std::vector<char> list: tab) {
         int x = 0;
         for (char c : list) {
             this->_rect.x = x * TEX_SIZE;
             this->_rect.y = y * TEX_SIZE;
-            this->_tex = this->_textures.find(c)->second;
-            SDL_RenderCopy(this->_renderer, this->_tex, NULL, &this->_rect);
+            it = this->_textures.find(c);
+            if (it != this->_textures.end()) {
+                this->_tex = it->second;
+                SDL_RenderCopy(this->_renderer, this->_tex, NULL, &this->_rect);
+            }
             x++;
         }
         y++;

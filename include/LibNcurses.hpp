@@ -24,6 +24,7 @@ class LibNcurses : public ILib {
         void windowClear();
         bool windowIsOpen() const;
         void windowDisplay(std::vector<std::vector<char>>);
+        void setTextures(std::map<char, std::string>);
 
         /* USER INPUT */
         void userInput();
