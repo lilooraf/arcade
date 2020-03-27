@@ -36,8 +36,8 @@ void LibSfml::windowOpen()
 void LibSfml::windowClose()
 {
     std::cout << "sfml window close" << std::endl;
-    delete this->_window;
-    this->_windowState = false;
+    this->_window->close();
+    delete this;
 }
 
 bool LibSfml::windowIsOpen() const

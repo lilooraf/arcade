@@ -80,6 +80,7 @@ void Core::closeLib()
 void Core::nextLib()
 {
     this->_currentLib->windowClose();
+    delete this->_currentLib;
     closeLib();
     this->_libCount = this->_libCount + 1 < this->_graphLibs.size() ? this->_libCount + 1 : 0;
     loadLib("lib/" + this->_graphLibs.at(this->_libCount));

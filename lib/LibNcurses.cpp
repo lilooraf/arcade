@@ -10,13 +10,11 @@
 LibNcurses::LibNcurses()
 {
     this->_key = -1;
-    this->_window = initscr();
     this->_windowState = false;
 }
 
 LibNcurses::~LibNcurses()
 {
-    this->_windowState = false;
 }
 
 void LibNcurses::test() const
@@ -27,6 +25,7 @@ void LibNcurses::test() const
 void LibNcurses::windowOpen()
 {
     std::cout << "ncurses window open" << std::endl;
+    this->_window = initscr();
     keypad(this->_window, true);
     noecho();
     this->_windowState = true;
@@ -36,7 +35,7 @@ void LibNcurses::windowClose()
 {
     std::cout << "ncurses window close" << std::endl;
     endwin();
-    this->_windowState = false;
+    delete this;
 }
 
 void LibNcurses::windowClear()

@@ -24,7 +24,6 @@ LibSdl::LibSdl()
 
 LibSdl::~LibSdl()
 {
-    std::cout << "sdl close" << std::endl;
 }
 
 void LibSdl::test() const
@@ -45,7 +44,7 @@ void LibSdl::windowClose()
     SDL_DestroyWindow(this->_window);
     SDL_DestroyRenderer(this->_renderer);
     SDL_Quit();
-    this->_windowState = false;
+    delete this;
 }
 
 bool LibSdl::windowIsOpen() const
