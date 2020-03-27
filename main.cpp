@@ -16,9 +16,10 @@ int main(int ac, char **av)
     std::string input;
     core->getCurrentLib()->windowOpen();
     while (core->getCurrentLib()->windowIsOpen()) {
+        core->getCurrentLib()->windowClear();
+        core->getCurrentLib()->windowDisplay(core->getTab());
         core->getCurrentLib()->userInput();
         core->basicInput();
-        core->getCurrentLib()->windowClear();
     }
     core->getCurrentLib()->windowClose();
 

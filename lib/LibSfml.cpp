@@ -9,15 +9,14 @@
 
 LibSfml::LibSfml()
 {
-    this->_window = new sf::RenderWindow(sf::VideoMode(1860, 1000), "SFML Window");
+    this->_window = new sf::RenderWindow(sf::VideoMode(DISPLAY_W, DISPLAY_H), "SFML Window");
     this->_window->setFramerateLimit(144);
     this->_windowState = false;
 }
 
 LibSfml::~LibSfml()
 {
-    delete this->_window;
-    this->_windowState = false;
+    std::cout << "sfml close" << std::endl;
 }
 
 void LibSfml::test() const
@@ -41,7 +40,6 @@ void LibSfml::windowClose()
 
 bool LibSfml::windowIsOpen() const
 {
-    std::cout << this->_windowState << std::endl;
     return this->_windowState;
 }
 
@@ -49,6 +47,11 @@ void LibSfml::windowClear()
 {
     this->_window->display();
     this->_window->clear();
+}
+
+void LibSfml::windowDisplay(std::vector<std::vector<char>> tab)
+{
+
 }
 
 /* KEY INPUT */

@@ -10,7 +10,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include <map>
+
 #include "ILib.hpp"
 #include "defs.hpp"
 
@@ -23,6 +24,8 @@ class LibSdl : public ILib {
         void windowClose();
         void windowClear();
         bool windowIsOpen() const;
+        void windowDisplay(std::vector<std::vector<char>>);
+        void setTextures();
 
         /* USER INPUT */
         void userInput();
@@ -33,7 +36,11 @@ class LibSdl : public ILib {
     private:
         bool _windowState;
         SDL_Window *_window;
+        SDL_Renderer *_renderer;
         SDL_Event _event;
+        SDL_Rect _rect;
+        SDL_Texture *_tex;
+        std::map <char, SDL_Texture *> _textures;
 };
 
 #endif /* !LIBSDL_HPP_ */

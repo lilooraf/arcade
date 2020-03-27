@@ -8,6 +8,8 @@
 #ifndef ILIB_HPP_
 #define ILIB_HPP_
 
+#include "defs.hpp"
+
 class ILib {
     public:
         virtual ~ILib() {};
@@ -16,6 +18,7 @@ class ILib {
         virtual void windowClose() {};
         virtual void windowClear() {};
         virtual bool windowIsOpen() const = 0;
+        virtual void windowDisplay(std::vector<std::vector<char>>) {};
 
         /* USER INPUT */
         virtual void userInput() {};

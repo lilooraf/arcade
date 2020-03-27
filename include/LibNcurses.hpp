@@ -23,6 +23,7 @@ class LibNcurses : public ILib {
         void windowClose();
         void windowClear();
         bool windowIsOpen() const;
+        void windowDisplay(std::vector<std::vector<char>>);
 
         /* USER INPUT */
         void userInput();

@@ -17,7 +17,6 @@ LibNcurses::LibNcurses()
 LibNcurses::~LibNcurses()
 {
     this->_windowState = false;
-    endwin();
 }
 
 void LibNcurses::test() const
@@ -48,8 +47,22 @@ void LibNcurses::windowClear()
 
 bool LibNcurses::windowIsOpen() const
 {
-    std::cout << this->_windowState << std::endl;
     return this->_windowState;
+}
+
+void LibNcurses::windowDisplay(std::vector<std::vector<char>> tab)
+{
+    std::string str = " ";
+    int y = 0;
+    for (std::vector<char> ta: tab) {
+        int x = 0;
+        for (char c : ta) {
+            str[0] = c;
+            mvprintw(y, x, str.c_str());
+            x++;
+        }
+        y++;
+    }
 }
 
 /* USER INPUT */

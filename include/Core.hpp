@@ -18,6 +18,7 @@ class Core {
 
         /* GETTERS */
         ILib *getCurrentLib() const;
+        std::vector<std::vector<char>> getTab() const;
 
         /* SETTERS */
         void setCurrentLib(ILib *lib);
@@ -31,6 +32,7 @@ class Core {
 
     protected:
     private:
+        std::vector<std::vector<char>> _tab;
         void *_handle;
         ILib *_currentLib;
         std::vector<std::string> _graphLibs;

@@ -20,6 +20,11 @@ Core::Core(const std::string &lib_path)
         }
     }
     this->_gameCount = 0;
+    std::vector<char> baseline;
+    for (int i = 0; i < TAB_W; i++)
+        baseline.push_back('A');
+    for (int j = 0; j < TAB_H; j++)
+        this->_tab.push_back(baseline);
 }
 
 Core::~Core()
@@ -31,6 +36,11 @@ Core::~Core()
 ILib *Core::getCurrentLib() const
 {
     return this->_currentLib;
+}
+
+std::vector<std::vector<char>> Core::getTab() const
+{
+    return this->_tab;
 }
 
 
