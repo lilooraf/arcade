@@ -5,6 +5,9 @@
 ## Makefile
 ##
 
+CORE_SRC	=	../core/Core.cpp	\
+				../core/Score.cpp	\
+
 SRC			=	$(NIBBLER_SRC)		\
 				$(PACMAN_SRC)		\
 
@@ -15,8 +18,12 @@ NAMES		=	$(N_NAME)			\
 				$(P_NAME)			\
 
 NIBBLER_SRC	=	Nibbler.cpp			\
+				Player.cpp			\
+				$(CORE_SRC)			\
 
 PACMAN_SRC	=	Pacman.cpp			\
+				Player.cpp			\
+				$(CORE_SRC)			\
 
 RELOC_DIR	=	./../relocated/
 

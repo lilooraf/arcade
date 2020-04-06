@@ -12,20 +12,28 @@
 
 #include <ostream>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <dlfcn.h>
 #include <stdio.h>
 #include <vector>
 #include <map>
+#include <string>
+
 #include <dirent.h>
 #include <cstring>
+#include <unistd.h>
+#include <time.h>
 
 #define IMG_SIZE    32
-#define RAT         1.3
-#define DISPLAY_H   640
+#define RAT         1.5
+#define SCALE       0.84401
+#define DISPLAY_H   720
 #define DISPLAY_W   DISPLAY_H * RAT
-#define TAB_H       20
-#define TAB_W       TAB_H * RAT
-#define TEX_SIZE    DISPLAY_H / TAB_H
+#define TAB_H       21
+#define TAB_W       21
+#define TEX_SIZE    32
 
+#define SPEED       40
 
 #endif /* !DEFS_HPP_ */

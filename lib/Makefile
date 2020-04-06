@@ -24,7 +24,6 @@ SFML_SRC	=	LibSfml.cpp			\
 SDL_SRC		=	LibSdl.cpp			\
 
 RELOC_DIR	=	./../relocated/
-RELOC_DIR	=	./../relocated/
 
 NCURSES_OBJ	=	$(foreach source, $(NCURSES_SRC), $(RELOC_DIR)$(source:.cpp=.o))
 

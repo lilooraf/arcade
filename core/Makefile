@@ -6,19 +6,20 @@
 ##
 
 SRC			=	Core.cpp				\
+				Score.cpp				\
 
 RELOC_DIR	=	../relocated/
 
 OBJ			=	$(foreach source, $(SRC), $(RELOC_DIR)$(source:.cpp=.o))
 
-CXXFLAGS	=	-W -Wall -Wextra -Iinclude -ldl -g
+CXXFLAGS	=	-W -Wall -Wextra -Iinclude -ldl -g -pthread
 
 NAME		=	../arcade
 
 all:		core
 
 core:		$(OBJ)
-		g++ -o $(NAME) $(RELOC_DIR)*.o $(CXXFLAGS)
+		g++ -o $(NAME) $(OBJ) $(RELOC_DIR)main.o $(CXXFLAGS)
 
 $(RELOC_DIR)%.o:	%.cpp
 		g++ -o $@ -c $^ $(CXXFLAGS)
