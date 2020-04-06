@@ -31,7 +31,8 @@ void GameLinkTexture(Core *core)
     texMap.insert(std::make_pair('N', "./assets/N.png"));
     texMap.insert(std::make_pair('H', "./assets/H.png"));
     texMap.insert(std::make_pair('.', "./assets/X.png"));
-    texMap.insert(std::make_pair('o', "./assets/O.png"));
+    texMap.insert(std::make_pair('o', "./assets/o.png"));
+    texMap.insert(std::make_pair('O', "./assets/O.png"));
     texMap.insert(std::make_pair('B', "./assets/Ghost_V.png"));
     texMap.insert(std::make_pair('J', "./assets/Blinky.png"));
     texMap.insert(std::make_pair('P', "./assets/Pinky.png"));

@@ -40,15 +40,18 @@ class Nibbler : public IGame {
         /* SETTERS */
         void setCore(Core *);
         void setMap();
+        void setGameTimer();
 
         /* OTHERS */
-        void checkWin() {};
+        void checkWin();
+        void drawTail();
     protected:
     private:
         std::string _name;
         Player *_player;
         std::vector<std::string> _map;
         Core *_core;
+        int _size;
 };
 
 #endif /* !Nibbler_HPP_ */

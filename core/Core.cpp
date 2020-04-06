@@ -10,16 +10,17 @@
 
 Core::Core(const std::string &lib_path, const std::string &game_path)
 {
+    this->_score = new Score();
     this->_currentLib = this->_libLoader.load(lib_path);
     this->_currentLib->setTextures(this->_texMap);
     this->_libs = parseLibs("lib/");
     this->_libCount = setCounters(lib_path, this->_libs);
     this->_currentGame = _gameLoader.load(game_path);
-    this->_currentGame->setCore(this);
     this->_games = parseLibs("games/");
     this->_gameCount = setCounters(game_path, this->_games);
+    this->_currentGame->setCore(this);
+    this->_currentGame->setGameTimer();
     this->_state = USERNAME;
-    this->_score = new Score();
 }
 
 Core::~Core()
@@ -91,6 +92,7 @@ void Core::nextGame()
     this->_gameCount = this->_gameCount + 1 < this->_games.size() ? this->_gameCount + 1 : 0;
     this->_currentGame = this->_gameLoader.load("games/" + this->_games.at(this->_gameCount));
     this->_currentGame->setCore(this);
+    this->_currentGame->setGameTimer();
 }
 
 void Core::prevGame()
@@ -100,6 +102,7 @@ void Core::prevGame()
     this->_gameCount = this->_gameCount == 0 ? this->_games.size() - 1 : this->_gameCount - 1;
     this->_currentGame = this->_gameLoader.load("games/" + this->_games.at(this->_gameCount));
     this->_currentGame->setCore(this);
+    this->_currentGame->setGameTimer();
 }
 
 void Core::basicInput()

@@ -42,6 +42,7 @@ class Pacman : public IGame {
         /* SETTERS */
         void setCore(Core *);
         void setMap();
+        void setGameTimer();
 
         /* OTHERS */
     protected:

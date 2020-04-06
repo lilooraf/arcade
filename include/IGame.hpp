@@ -44,6 +44,7 @@ class IGame {
         virtual void resetGame() {};
         virtual void refresh() {};
         virtual void setCore(Core *) {};
+        virtual void setGameTimer() {};
 };
 
 #endif /* !IGAME_HPP_ */

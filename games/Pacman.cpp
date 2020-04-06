@@ -5,7 +5,7 @@
 ** Pacman
 */
 
-#include "Pacman.hpp"
+#include "../include/Pacman.hpp"
 #include <math.h>
 #include <time.h>
 
@@ -53,6 +53,11 @@ std::string Pacman::getName() const
 void Pacman::setCore(Core *core)
 {
     this->_core = core;
+}
+
+void Pacman::setGameTimer()
+{
+    this->_core->getScore()->setTimer(Score::UP, 0, 0);
 }
 
 void Pacman::setMap()
@@ -321,7 +326,7 @@ void Pacman::checkWin()
             if (c == '.' || c == 'o')
                 return;
     this->_core->setState(Core::WIN);
-    this->_core->getScore()->stopTimer();
+    this->_core->getScore()->pauseTimer();
     this->_player->setPos(0, 0);
     this->_player->setType(-1);
 }
